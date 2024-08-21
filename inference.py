@@ -43,8 +43,8 @@ class GenInput(Process):
 
 def save_video_ffmpeg(video_path, swap_video_path, model_name=''):
     video_name = os.path.basename(video_path).split('.')[-2]
-    # audio_file_path = os.path.join(video_dir, video_name + '.wav')
-    audio_file_path = video_path.split('.')[-2] + '.wav'
+    audio_file_path = os.path.join(os.path.dirname(os.path.realpath(video_path)), video_name + '.wav')
+    # audio_file_path = video_path.split('.')[-2] + '.wav'
     if not os.path.exists(audio_file_path):
         print('extract audio')
         os.system(

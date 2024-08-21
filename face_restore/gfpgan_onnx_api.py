@@ -42,8 +42,8 @@ class GFPGAN(ModelBase):
             face_image = cv2.resize(face_image, (512, 512))
 
         face_image = np.uint8(face_image * 255.0)
-        # image_in = CVImage(face_image).blob(self.input_size, self.input_mean, self.input_std, rgb=False)
-        image_in = CVImage(face_image).set_blob(self.input_std, self.input_mean, self.input_size).blob_in(rgb=False)
+        image_in = CVImage(face_image).blob(self.input_size, self.input_mean, self.input_std, rgb=False)
+        # image_in = CVImage(face_image).set_blob(self.input_std, self.input_mean, self.input_size).blob_in(rgb=False)
         if 'codeformer' in self.model_type:
             image_out = self.model.forward([image_in,np.array(1,dtype=np.float32)])
         else:
